@@ -51,14 +51,14 @@ function MeetingsPage() {
 
   const onFile = async (file?: File) => {
     if (!file) return;
-    if (!/\.(txt|md|markdown|csv|vtt|srt)$/i.test(file.name)) return toast.error("Unsupported file. Use .txt, .md, .csv, .vtt or .srt");
-    if (file.size > 1_000_000) return toast.error("File too large (max 1 MB)");
+    if (!/\.(txt|md|markdown|csv|vtt|srt)$/i.test(file.name)) return void toast.error("Unsupported file. Use .txt, .md, .csv, .vtt or .srt");
+    if (file.size > 1_000_000) return void toast.error("File too large (max 1 MB)");
     setNotes(await file.text());
     toast.success(`Loaded ${file.name}`);
   };
 
   const run = async () => {
-    if (notes.trim().length < 20) return setInvalid("Please paste at least a few sentences of meeting notes.");
+    if (notes.trim().length < 20) return void setInvalid("Please paste at least a few sentences of meeting notes.");
     setInvalid(null);
     const prompt = `Meeting title: ${title || "Not specified"}\nDate: ${date || "Not specified"}\nAttendees: ${attendees || "Not specified"}\n\nNotes:\n${notes}`;
     const r = await ai.run({ prompt });

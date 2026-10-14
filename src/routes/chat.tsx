@@ -47,7 +47,7 @@ function ChatPage() {
 
   useEffect(() => {
     const h = takeHandoff("chat");
-    if (h?.message) send(h.message, null);
+    if (h?.["message"]) send(h["message"], null);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   useEffect(() => endRef.current?.scrollIntoView({ behavior: "smooth" }), [active?.messages.length, ai.loading]);

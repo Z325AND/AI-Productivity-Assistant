@@ -38,7 +38,7 @@ function Sel({ value, onChange, options, id }: { value: string; onChange: (v: st
 
 function parse(text: string) {
   const m = text.match(/^\s*Subject:\s*(.+)\n+([\s\S]*)$/i);
-  return m ? { subject: m[1].trim(), body: m[2].trim() } : { subject: "", body: text.trim() };
+  return m ? { subject: (m[1] ?? "").trim(), body: (m[2] ?? "").trim() } : { subject: "", body: text.trim() };
 }
 
 function EmailPage() {
@@ -52,11 +52,11 @@ function EmailPage() {
 
   useEffect(() => {
     const h = takeHandoff("email");
-    if (h) setF((p) => ({ ...p, purpose: h.purpose ?? p.purpose, points: h.points ?? p.points, type: h.type ?? p.type }));
+    if (h) setF((p) => ({ ...p, purpose: h["purpose"] ?? p.purpose, points: h["points"] ?? p.points, type: h["type"] ?? p.type }));
   }, []);
 
   const generate = async () => {
-    if (!f.purpose.trim()) return setInvalid("Please describe the purpose of the email.");
+    if (!f.purpose.trim()) return void setInvalid("Please describe the purpose of the email.");
     setInvalid(null);
     const prompt = `Purpose: ${f.purpose}\nRecipient/audience: ${f.audience}${f.name ? ` (name: ${f.name})` : ""}\nEmail type: ${f.type}\nTone: ${f.tone}\nLength: ${f.length}\nKey points to include:\n${f.points || "(none given)"}\nBackground/subject context: ${f.context || "(none)"}`;
     const r = await ai.run({ kind: "email", prompt });

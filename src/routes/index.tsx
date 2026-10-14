@@ -78,7 +78,7 @@ function Dashboard() {
           </Button>
         </div>
         <div className="mt-4 flex flex-wrap gap-2">
-          {[["Generate email", "/email"], ["Summarize meeting", "/meetings"], ["Plan my tasks", "/planner"], ["Research a topic", "/research"]].map(([l, to]) => (
+          {([["Generate email", "/email"], ["Summarize meeting", "/meetings"], ["Plan my tasks", "/planner"], ["Research a topic", "/research"]] as const).map(([l, to]) => (
             <Button key={to} variant="soft" size="sm" asChild>
               <Link to={to}>{l}</Link>
             </Button>

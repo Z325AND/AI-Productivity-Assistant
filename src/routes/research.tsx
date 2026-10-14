@@ -37,7 +37,7 @@ function ResearchPage() {
   const base = () => `Research question/topic: ${topic || "(see supplied text)"}\nDepth: ${depth}\nOutput preference: ${format}\n${url ? `User-referenced URL (NOT fetched — you cannot access it; list it under Sources only as "provided by user, not retrieved"): ${url}\n` : ""}\nSupplied text:\n${text || "(none supplied — answer from general knowledge and clearly label it as such, with no citations)"}`;
 
   const run = async (extra = "") => {
-    if (!topic.trim() && text.trim().length < 30) return setInvalid("Enter a research question or paste some text to analyse.");
+    if (!topic.trim() && text.trim().length < 30) return void setInvalid("Enter a research question or paste some text to analyse.");
     setInvalid(null);
     const r = await ai.run({ kind: "research", prompt: base() + (extra ? `\n\nAdditional instruction: ${extra}\nPrevious answer:\n${out}` : "") });
     if (r) setOut(r);
