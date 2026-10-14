@@ -5,13 +5,13 @@ export type Priority = "High" | "Medium" | "Low";
 export type Task = {
   id: string;
   title: string;
-  description?: string;
-  deadline?: string;
-  duration?: number; // minutes
+  description?: string | undefined;
+  deadline?: string | undefined;
+  duration?: number | undefined;
   importance: Priority;
   urgency: Priority;
   done: boolean;
-  source?: string;
+  source?: string | undefined;
   createdAt: number;
 };
 export type SavedItem = {

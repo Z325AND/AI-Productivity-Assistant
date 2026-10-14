@@ -89,7 +89,7 @@ function PlannerPage() {
   const ai = useAi(aiPlan);
 
   const addTask = () => {
-    if (!n.title.trim()) return toast.error("Give the task a title");
+    if (!n.title.trim()) return void toast.error("Give the task a title");
     add({ title: n.title.trim(), description: n.description || undefined, deadline: n.deadline || undefined, duration: n.duration ? Number(n.duration) : undefined, importance: n.importance, urgency: n.urgency });
     setN(blank);
     toast.success("Task added");
@@ -100,7 +100,7 @@ function PlannerPage() {
   const done = tasks.length - open.length;
 
   const generate = async () => {
-    if (!open.length) return toast.error("Add at least one open task first");
+    if (!open.length) return void toast.error("Add at least one open task first");
     const list = open.map((t) => `- ${t.title}${t.description ? ` (${t.description})` : ""} | importance: ${t.importance} | urgency: ${t.urgency} | deadline: ${t.deadline ?? "none"} | estimate: ${t.duration ? t.duration + " min" : "not given"}`).join("\n");
     const r = await ai.run({ prompt: `Today is ${new Date().toDateString()}. Plan scope: ${scope === "Today" ? "today only (one day)" : "the next 5 working days"}.\nWorking hours: ${hours.start}–${hours.end}\nBreak preferences: ${breaks}\nExisting commitments: ${commitments || "none"}\n\nTasks:\n${list}` });
     if (r) setPlan(r);
@@ -163,7 +163,7 @@ function PlannerPage() {
                   <TabsContent value="agenda" className="space-y-4">
                     <div className={plan.days.length > 1 ? "grid gap-4 md:grid-cols-2" : ""}>
                       {plan.days.map((d) => {
-                        const mins = d.blocks.filter((b) => b.type === "task").reduce((s, b) => { const [h1, m1] = b.start.split(":").map(Number); const [h2, m2] = b.end.split(":").map(Number); return s + Math.max(0, h2 * 60 + m2 - h1 * 60 - m1); }, 0);
+                        const mins = d.blocks.filter((b) => b.type === "task").reduce((s, b) => { const [h1, m1] = b.start.split(":").map(Number); const [h2, m2] = b.end.split(":").map(Number); return s + Math.max(0, (h2 ?? 0) * 60 + (m2 ?? 0) - (h1 ?? 0) * 60 - (m1 ?? 0)); }, 0);
                         return (
                           <div key={d.day}>
                             <p className="mb-2 flex justify-between text-sm font-semibold"><span>{d.day}</span><span className="font-normal text-muted-foreground">{Math.round(mins / 6) / 10}h focus</span></p>

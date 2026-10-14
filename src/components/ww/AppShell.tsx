@@ -185,7 +185,7 @@ export function AppShell({ children }: { children: ReactNode }) {
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" size="icon" aria-label="Profile menu">
                     <span className="grid h-7 w-7 place-items-center rounded-full bg-primary text-xs font-semibold text-primary-foreground">
-                      {name ? name[0].toUpperCase() : <User className="h-3.5 w-3.5" />}
+                      {name ? name.charAt(0).toUpperCase() : <User className="h-3.5 w-3.5" />}
                     </span>
                   </Button>
                 </DropdownMenuTrigger>
