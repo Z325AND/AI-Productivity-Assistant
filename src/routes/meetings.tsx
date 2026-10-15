@@ -17,6 +17,8 @@ export const Route = createFileRoute("/meetings")({
       { name: "description", content: "Turn meeting notes into summaries, decisions, action items and next steps." },
       { property: "og:title", content: "Meeting Notes Summarizer — WorkWise AI" },
       { property: "og:description", content: "Structured, actionable meeting summaries from raw notes." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: MeetingsPage,

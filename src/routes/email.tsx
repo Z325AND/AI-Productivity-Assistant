@@ -17,6 +17,8 @@ export const Route = createFileRoute("/email")({
       { name: "description", content: "Generate professional, context-aware workplace emails with adjustable tone and length." },
       { property: "og:title", content: "Smart Email Generator — WorkWise AI" },
       { property: "og:description", content: "Write clear, professional emails tailored to your audience." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: EmailPage,

@@ -17,6 +17,8 @@ export const Route = createFileRoute("/research")({
       { name: "description", content: "Summarise reports, extract insights and get practical recommendations from your own content." },
       { property: "og:title", content: "AI Research Assistant — WorkWise AI" },
       { property: "og:description", content: "Understand complex topics quickly and make informed decisions." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: ResearchPage,
