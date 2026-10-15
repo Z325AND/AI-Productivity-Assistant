@@ -1,4 +1,4 @@
 # Preview recovery
-- [ ] Create the missing Prompt Lab, Saved Items and Settings pages.
-- [ ] Verify navigation and saved-item/settings interactions.
-- [ ] Confirm the preview has no build errors.
+- [x] Create the missing Prompt Lab, Saved Items and Settings pages.
+- [x] Verify navigation and saved-item/settings interactions.
+- [x] Confirm the preview has no build errors.
