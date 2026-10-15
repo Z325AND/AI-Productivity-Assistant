@@ -15,6 +15,8 @@ export const Route = createFileRoute("/chat")({
       { name: "description", content: "Chat with a helpful AI workplace colleague for writing, planning and problem-solving." },
       { property: "og:title", content: "AI Workplace Chat — WorkWise AI" },
       { property: "og:description", content: "Your always-available AI colleague." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: ChatPage,

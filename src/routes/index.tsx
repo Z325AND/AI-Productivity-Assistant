@@ -15,6 +15,8 @@ export const Route = createFileRoute("/")({
       { name: "description", content: "Your AI workplace dashboard: tasks, deadlines, saved outputs and productivity tools." },
       { property: "og:title", content: "WorkWise AI — Work smarter. Communicate better. Achieve more." },
       { property: "og:description", content: "AI-powered workplace assistant for emails, meetings, planning and research." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Dashboard,

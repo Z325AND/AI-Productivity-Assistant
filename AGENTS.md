@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep each navigation destination as a TanStack file route; Prompt Lab assembles prompts locally and Saved Items/Settings reuse the existing device store so linked tools remain usable without new server dependencies.

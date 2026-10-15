@@ -21,6 +21,8 @@ export const Route = createFileRoute("/planner")({
       { name: "description", content: "Prioritise tasks with an urgency-importance matrix and build realistic daily and weekly schedules." },
       { property: "og:title", content: "AI Task Planner — WorkWise AI" },
       { property: "og:description", content: "Smart prioritisation and realistic schedules for your workload." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: PlannerPage,
