@@ -52,7 +52,7 @@ function ChatPage() {
     if (h?.["message"]) send(h["message"], null);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  useEffect(() => endRef.current?.scrollIntoView({ behavior: "smooth" }), [active?.messages.length, ai.loading]);
+  useEffect(() => { endRef.current?.scrollIntoView({ behavior: "smooth" }); }, [active?.messages.length, ai.loading]);
 
   async function send(text: string, base: ChatSession | null = active) {
     const content = text.trim();

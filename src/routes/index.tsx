@@ -42,7 +42,7 @@ function Dashboard() {
   const [name] = useUserName();
   const [q, setQ] = useState("");
   const [hello, setHello] = useState("Hello");
-  useEffect(() => setHello(greeting()), []);
+  useEffect(() => { setHello(greeting()); }, []);
 
   const today = new Date().toISOString().slice(0, 10);
   const done = tasks.filter((t) => t.done).length;
